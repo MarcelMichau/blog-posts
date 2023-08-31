@@ -99,39 +99,39 @@ With more wisdom gained, we set out on a path of optimisation. The first port of
 The pertinent code is shown here for reference:
 
 ```csharp
-        public static Func<HttpContext, double, Exception, LogEventLevel> GetLevel(LogEventLevel traceLevel, params string[] traceEndpointNames)
+public static Func<HttpContext, double, Exception, LogEventLevel> GetLevel(LogEventLevel traceLevel, params string[] traceEndpointNames)
+{
+    if (traceEndpointNames is null || traceEndpointNames.Length == 0)
+    {
+        throw new ArgumentNullException(nameof(traceEndpointNames));
+    }
+
+    return (ctx, _, ex) => 
+        IsError(ctx, ex) 
+        ? LogEventLevel.Error
+        : IsTraceEndpoint(ctx, traceEndpointNames)
+            ? traceLevel
+            : LogEventLevel.Information;
+}
+
+static bool IsError(HttpContext ctx, Exception ex) 
+    => ex != null || ctx.Response.StatusCode > 499;
+
+static bool IsTraceEndpoint(HttpContext ctx, string[] traceEndpoints)
+{
+    var endpoint = ctx.GetEndpoint();
+    if (endpoint is object)
+    {
+        for (var i = 0; i < traceEndpoints.Length; i++)
         {
-            if (traceEndpointNames is null || traceEndpointNames.Length == 0)
+            if (string.Equals(traceEndpoints[i], endpoint.DisplayName, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentNullException(nameof(traceEndpointNames));
+                return true;
             }
-
-            return (ctx, _, ex) => 
-                IsError(ctx, ex) 
-                ? LogEventLevel.Error
-                : IsTraceEndpoint(ctx, traceEndpointNames)
-                    ? traceLevel
-                    : LogEventLevel.Information;
         }
-
-        static bool IsError(HttpContext ctx, Exception ex) 
-            => ex != null || ctx.Response.StatusCode > 499;
-
-        static bool IsTraceEndpoint(HttpContext ctx, string[] traceEndpoints)
-        {
-            var endpoint = ctx.GetEndpoint();
-            if (endpoint is object)
-            {
-                for (var i = 0; i < traceEndpoints.Length; i++)
-                {
-                    if (string.Equals(traceEndpoints[i], endpoint.DisplayName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+    }
+    return false;
+}
 ```
 
 This `GetLevel` method is wired up in `Startup.cs`/`Program.cs` as follows:
