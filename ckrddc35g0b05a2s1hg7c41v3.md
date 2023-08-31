@@ -1,4 +1,12 @@
-## Taming Startup.cs in ASP.NET Core
+---
+title: "Taming Startup.cs in ASP.NET Core"
+datePublished: Wed Jul 21 2021 10:54:24 GMT+0000 (Coordinated Universal Time)
+cuid: ckrddc35g0b05a2s1hg7c41v3
+slug: taming-startupcs-in-aspnet-core
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1626864730209/pcMFTdkug.jpeg
+tags: tutorial, csharp, dotnet
+
+---
 
 Photo by [Safar Safarov](https://unsplash.com/@codestorm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/code?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
