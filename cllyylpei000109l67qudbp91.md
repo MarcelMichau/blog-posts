@@ -206,4 +206,4 @@ Moral of the story: checking if your app is healthy can come at a cost. Especial
 
 Through this effort, we gained a better understanding of exactly how our application generates logs, the triggers for these logs, and the various mechanisms to fine-tune exactly which logs get stored.
 
-I hope this post leads to some cash savings on a couple of invoices. :)
+I hope this post leads to some cash savings on a couple of invoices. 🙂
