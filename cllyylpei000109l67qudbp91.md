@@ -84,7 +84,7 @@ Another question we asked was:
 
 The answer to that question has some nuance to it.
 
-Azure Container Apps has an awesome feature called [Health Probes](https://learn.microsoft.com/en-us/azure/container-apps/health-probes). These probes are configured on a container level. Container Apps can also scale out your app to multiple containers based on a Scale Rule.
+Azure Container Apps has an awesome feature called [Health Probes](https://learn.microsoft.com/en-us/azure/container-apps/health-probes). These probes are configured on a container level. Container Apps can also scale out your app to multiple containers based on a [Scale Rule](https://learn.microsoft.com/en-us/azure/container-apps/scale-app?pivots=azure-cli#scale-rules).
 
 See where I'm going with this?
 
