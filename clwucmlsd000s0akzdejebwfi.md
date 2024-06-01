@@ -1,8 +1,8 @@
 ---
-title: "Azure SQL - Add SQL User From Managed Identity"
+title: "Azure SQL - Create SQL User From Managed Identity"
 datePublished: Fri May 31 2024 07:14:36 GMT+0000 (Coordinated Universal Time)
 cuid: clwucmlsd000s0akzdejebwfi
-slug: azure-sql-add-sql-user-from-managed-identity
+slug: azure-sql-create-sql-user-from-managed-identity
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/oyXis2kALVg/upload/3dee44ee54543f169d68122b695fca53.jpeg
 tags: azure, azure-pipelines, azure-sql-database, azure-managed-identities
 
