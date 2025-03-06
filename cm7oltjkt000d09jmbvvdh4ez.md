@@ -297,7 +297,7 @@ It's important to note that the `DisableHttpMetrics()` method is only available 
 
 During the wire-up of all these various filters, there were some finer points of configuration needed to address the following:
 
-1. Sending Serilog logs to the [OpenTelemetry sink](https://github.com/serilog/serilog-sinks-opentelemetry) when running on a local machine so that logs appear in the .NET Aspire dashboard.
+1. Sending Serilog logs to the local OTEL endpoint when running on a local machine so that logs appear in the .NET Aspire dashboard.
     
 2. Using the `Azure.Monitor.OpenTelemetry.Exporter` package instead of the `Azure.Monitor.OpenTelemetry.AspNetCore` package as the latter overrides some tracing & logging configuration which un-does a lot of our hard work.
     
@@ -322,9 +322,6 @@ public static class TelemetryConfigurationExtensions
                 .Filter.With(services.GetRequiredService<HealthCheckLogsFilter>())
                 .Enrich.FromLogContext()
                 .Filter.ByExcluding(MassTransitOutboxDbCommandLogExclusion);
-
-            if (builder.Environment.IsDevelopment())
-                lc.WriteTo.OpenTelemetry(); // This is used to push logs to the Aspire Dashboard during local development
 
         }, writeToProviders: true);
 
