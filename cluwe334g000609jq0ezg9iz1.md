@@ -8,6 +8,11 @@ tags: azure, net, azure-managed-identities, microsoft-entra
 
 ---
 
+<div data-node-type="callout">
+<div data-node-type="callout-emoji">💡</div>
+<div data-node-type="callout-text">UPDATE: As of 8 May 2025 , the ability to <a target="_self" rel="noopener noreferrer nofollow" href="https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-config-app-trust-managed-identity?tabs=microsoft-entra-admin-center" style="pointer-events: none">configure an application to trust a managed identity</a> is generally available - The below post documents a different mechanism to achieving a similar goal, though with some caveats. The official documentation is the recommended approach &amp; this post is left here for posterity.</div>
+</div>
+
 [Entra ID Managed Identities](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) are great. They enable authentication & authorization to Azure resources without the need to store & manage credentials.
 
 This works well if you, say, have an Azure Container App which connects to an Azure SQL Database. It's possible to [use a managed identity to authenticate with the database](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/tutorial-windows-vm-access-sql) so that you don't need to <s>hardcode</s> explicitly configure a password in a connection string.
